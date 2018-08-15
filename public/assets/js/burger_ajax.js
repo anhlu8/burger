@@ -17,10 +17,10 @@ $(function () {
         );
     });
 
-    $("#addburger").on("submit", function (event) {
+    $("#addburger").on("click", function (event) {
         event.preventDefault();
         var newBurger = {
-            name: $("#newBurger").val().trim(),
+            burger_name: $("#newBurger").val().trim(),
         };
         $.ajax("/api/burgers", {
             type: "POST",
