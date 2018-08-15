@@ -12,3 +12,10 @@ ul {
 #burgerimg {
     margin: auto;
 }
+
+#menu , aside , #addburgerbtn {
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    overflow: auto
+}

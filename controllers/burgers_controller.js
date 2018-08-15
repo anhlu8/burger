@@ -2,31 +2,31 @@ var express = require("express");
 var router = express.Router();
 var burger = require("../models/burger.js");
 
+// GET ROUTE:
 router.get("/", function (req, res) {
     burger.selectAll(function (data) {
         var hbsObj = {
             burgers: data
         };
-        // console.log(hbsObj);
         res.render("index", hbsObj);
     });
 });
 
+
+
+// POST ROUTE:
 router.post("/api/burgers", function (req, res) {
     burger.insertOne(req.body.burger_name, function (data) {
-        console.log("post", data);
-        res.render("index", data);
+        console.log(data)
+        res.redirect("/");
     });
 });
 
+// PUT ROUTE:
 router.put("/api/burgers/:id", function (req, res) {
-    console.log(req.params.id);
-    burger.updateOne(req.params.id, function (result) {
-        if (err) {
-            return res.status(500).end();
-        } else if (result.changedRows === 0) {
-            return res.status(404).end();
-        }
+    var burgerID = req.params.id;
+    burger.updateOne(burgerID, function (result) {
+        console.log(result)
         res.status(200).end();
     });
 });

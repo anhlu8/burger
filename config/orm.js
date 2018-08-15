@@ -1,5 +1,4 @@
 var connection = require('../config/connection.js');
-
 var orm = {
     selectAll: function (cb) {
         connection.query('SELECT * FROM burgers', function (err, result) {
@@ -15,7 +14,6 @@ var orm = {
             if (err) throw err;
             cb(result);
         });
-
     },
     updateOne: function (burgerID, cb) {
         connection.query('UPDATE burgers SET ? WHERE ?', [{
@@ -29,5 +27,4 @@ var orm = {
             });
     }
 };
-
 module.exports = orm;

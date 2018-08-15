@@ -1,29 +1,45 @@
 <div id="burgerimg">
-<img src="assets/img/burger.png" alt="burger icon" width="200px" height="200px" >
+  <img src="assets/img/burger.png" alt="burger icon" width="200px" height="200px">
 </div>
 <h1>Eat-Da-Burger!</h1>
 <hr>
-<div id="menu">
+
+<form class="button-size" id="addburgerbtn">
+  <h3>Add a Burger</h3>
+  <textarea type="text" name="burger_name" id="newBurger"></textarea>
+  <br>
+  <button type="submit" id="addburger">Order</button>
+</form>
+
+<div id="menu" class="clearfix">
   <h2>Menu</h2>
-<ul>
-  {{#each burgers}}
+  <ul>
+    {{#each burgers}} 
+    {{#unless devoured}}
     <li>
       <p>
         {{this.id}}. {{this.burger_name}}
 
-        <button id="{{this.id}}" class="devourburger">Devour</button>
+        <button data-id="{{this.id}}" class="devourBtn">Devour</button>
       </p>
     </li>
-  {{/each}}
-</ul>
-<aside id="devoured_burger">
+    {{/unless}} 
+    {{/each}}
+  </ul>
 
-</aside>
 </div>
-<hr>
-<form class="button-size">
-  <h3>Add a Burger</h3>
-	<textarea type="text" name="burger_name" id="newBurger"></textarea>
-  <br>
-	<button type="submit" id="addburger">Order</button>
-</form>
+
+<aside id="devoured_burger" class="clearfix">
+  <h2>Devoured Burgers:</h2>
+  <ul>
+    {{#each burgers}} 
+    {{#if devoured}}
+    <li>
+      <p>
+        {{this.id}}. {{this.burger_name}}
+      </p>
+    </li>
+    {{/if}} 
+    {{/each}}
+  </ul>
+</aside>
