@@ -20,8 +20,14 @@ router.post("/api/burgers", function (req, res) {
 });
 
 router.put("/api/burgers/:id", function (req, res) {
-    burger.updateOne(req.params.id, function (data) {
-        console.log("put", data);
+    console.log(req.params.id);
+    burger.updateOne(req.params.id, function (result) {
+        if (err) {
+            return res.status(500).end();
+        } else if (result.changedRows === 0) {
+            return res.status(404).end();
+        }
+        res.status(200).end();
     });
 });
 
