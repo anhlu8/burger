@@ -1,1 +1,26 @@
-<h1>{{lunch}}</h1>
+<div id="burgerimg">
+<img src="assets/img/burger.png" alt="burger icon" width="200px" height="200px" >
+</div>
+<h1>Eat-Da-Burger!</h1>
+<hr>
+<div id="menu">
+  <h2>Menu</h2>
+<ul>
+  {{#each burgers}}
+    <li>
+      <p>
+        {{this.id}}. {{this.burger_name}}
+
+        <button id="{{this.id}}" class="devourburger">Devour</button>
+      </p>
+    </li>
+  {{/each}}
+</ul>
+</div>
+<hr>
+<form class="button-size">
+  <h3>Add a Burger</h3>
+	<textarea type="text" name="burger_name" id="newBurger"></textarea>
+  <br>
+	<button type="submit" id="addburger">Order</button>
+</form>
